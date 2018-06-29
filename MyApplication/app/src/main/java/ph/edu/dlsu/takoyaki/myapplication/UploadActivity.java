@@ -28,6 +28,8 @@ public class UploadActivity extends AppCompatActivity {
         bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         decodeBarcode();
+
+
     }
 
     private void decodeBarcode(){
