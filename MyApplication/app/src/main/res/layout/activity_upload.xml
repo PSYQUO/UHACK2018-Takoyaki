@@ -9,6 +9,7 @@
     tools:context=".UploadActivity">
 
     <ImageView
+        android:id="@+id/img_view_barcode"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:src="@drawable/metro"
