@@ -35,6 +35,7 @@
         <activity android:name=".Tutorial" />
         <activity android:name=".UploadActivity" />
         <activity android:name=".RewardInfoActivity"></activity>
+        <activity android:name=".MyRewardsActivity"></activity>
     </application>
 
 </manifest>
