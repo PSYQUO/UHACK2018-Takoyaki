@@ -21,7 +21,6 @@
         <activity
             android:name=".LoadingActivity"
             android:theme="@style/FullScreen">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +32,9 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Tutorial"></activity>
+        <activity android:name=".Tutorial" />
+        <activity android:name=".UploadActivity" />
+        <activity android:name=".RewardInfoActivity"></activity>
     </application>
 
 </manifest>
