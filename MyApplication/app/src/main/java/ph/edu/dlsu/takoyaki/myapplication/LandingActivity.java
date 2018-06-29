@@ -23,8 +23,6 @@ public class LandingActivity extends AppCompatActivity {
 
                 i.setClass(getBaseContext(), LoginActivity.class);
                 startActivity(i);
-
-                finish();
             }
         });
 
@@ -35,8 +33,6 @@ public class LandingActivity extends AppCompatActivity {
 
                 i.setClass (getBaseContext(), RegisterActivity.class);
                 startActivity(i);
-
-                finish ();
             }
         });
 
