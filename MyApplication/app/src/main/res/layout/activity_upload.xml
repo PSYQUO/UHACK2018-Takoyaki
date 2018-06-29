@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".UploadActivity">
+    tools:context=".UploadActivity"
+    android:id="@+id/LinearLayout_Upload">
 
     <ImageView
         android:id="@+id/img_view_barcode"
@@ -18,7 +19,7 @@
 
     <!--include only the appropriate layout-->
     <!--<include layout="@layout/upload_processing"></include>-->
-    <include layout="@layout/upload_success"></include>
+    <!--<include layout="@layout/upload_success"></include>-->
     <!--<include layout="@layout/upload_fail"></include>-->
 
 </LinearLayout>

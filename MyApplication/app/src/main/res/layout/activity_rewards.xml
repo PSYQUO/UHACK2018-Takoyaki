@@ -104,6 +104,7 @@
             android:layout_weight="1">
 
             <ImageButton
+                android:id="@+id/rewards_cameraBtn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="8dp"
