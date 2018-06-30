@@ -36,8 +36,11 @@ public class UploadActivity extends AppCompatActivity {
         View view;
 
         //If fail or not
-        if(decodeBarcode()) {
+        String s = decodeBarcode();
+        if(s != null) {
             view = getLayoutInflater().inflate(R.layout.upload_success, null);
+            TextView txtView = (TextView) view.findViewById(R.id.upload_points);
+            txtView.setText(s.split("\\n")[1]);
         }else{
             view = getLayoutInflater().inflate(R.layout.upload_fail, null);
         }
@@ -58,7 +61,8 @@ public class UploadActivity extends AppCompatActivity {
         });
     }
 
-    private boolean decodeBarcode(){
+    private String decodeBarcode(){
+        String out = null;
         try {
 //            Bitmap bitmap = new ImageSaver(getBaseContext()).
 //                    setFileName("temp.png").
@@ -79,7 +83,7 @@ public class UploadActivity extends AppCompatActivity {
                             .build();
             if(!detector.isOperational()){
 //                    txtView.setText("Could not set up the detector!");
-                return false;
+                return out;
             }
 
             Frame frame = new Frame.Builder().setBitmap(bitmap).build();
@@ -88,16 +92,17 @@ public class UploadActivity extends AppCompatActivity {
 
             Barcode thisCode = barcodes.valueAt(0);
 //            TextView txtView = (TextView) findViewById(R.id.upload_points);
+            out = thisCode.rawValue;
 //            String[] temp = thisCode.rawValue.split("\\n");
 //            txtView.setText(temp[1]);
         }
         catch(ArrayIndexOutOfBoundsException exception) {
 //            TextView txtView = (TextView) findViewById(R.id.txtContent);
 //            txtView.setText("TRY AGAIN BITCH!!!!");
-            return false;
+            return out;
         }
 
-        return true;
+        return out;
     };
 
 }
