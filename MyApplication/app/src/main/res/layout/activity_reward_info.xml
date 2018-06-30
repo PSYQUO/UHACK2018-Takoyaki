@@ -11,16 +11,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:padding="10dp"
         >
 
         <ImageView
             android:id="@+id/rewardInfo_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/logo"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/jollibee_2011_logo"/>
 
         <TextView
             android:id="@+id/rewardInfo_desc"
@@ -28,40 +30,56 @@
             android:layout_height="wrap_content"
             android:text="Get 20% off your next purchase"
             android:textAlignment="center"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Valid until "/>
+
+            <TextView
+                android:id="@+id/rewardInfo_validity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mm/dd/yy"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Valid until "/>
-
-        <TextView
-            android:id="@+id/rewardInfo_validity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="mm/dd/yy"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginTop="30dp"
         >
+
+        <!--empty until user clicks use button-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text=""
+            />
+
+
+        <!--becomes disabled once used na sya-->
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Use"/>
+            android:text="Use" />
 
     </LinearLayout>
 
