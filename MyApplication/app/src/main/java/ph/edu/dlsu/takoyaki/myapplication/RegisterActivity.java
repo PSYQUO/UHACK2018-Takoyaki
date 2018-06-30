@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println ("HERE");
                 String uid = databaseReference.child(Users.NAME).push().getKey();
                 String email = registerEmail.getText().toString();
                 String password = registerPassword.getText().toString();
