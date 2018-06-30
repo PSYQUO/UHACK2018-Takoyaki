@@ -85,9 +85,11 @@
 
         <!--becomes disabled once used na sya-->
         <Button
+            android:id="@+id/use_reward"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Use"
             android:background="@color/colorAccent"/>
 
+    </LinearLayout>
 </LinearLayout>
