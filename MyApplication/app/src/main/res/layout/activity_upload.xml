@@ -21,7 +21,7 @@
 
     <!--include only the appropriate layout-->
     <!--<include layout="@layout/upload_processing"></include>-->
-    <include layout="@layout/upload_success"></include>
+    <!--<include layout="@layout/upload_success"></include>-->
     <!--<include layout="@layout/upload_fail"></include>-->
 
 </LinearLayout>
