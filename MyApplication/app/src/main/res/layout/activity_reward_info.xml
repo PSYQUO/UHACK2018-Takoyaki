@@ -89,5 +89,6 @@
             android:layout_height="wrap_content"
             android:text="Use"
             android:background="@color/colorAccent"/>
+    </LinearLayout>
 
 </LinearLayout>

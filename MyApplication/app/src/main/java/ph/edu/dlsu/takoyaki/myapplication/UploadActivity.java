@@ -1,5 +1,6 @@
 package ph.edu.dlsu.takoyaki.myapplication;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -7,7 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -28,9 +31,33 @@ public class UploadActivity extends AppCompatActivity {
         bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         decodeBarcode();
+        LinearLayout ln = (LinearLayout) this.findViewById(R.id.LinearLayout_upload);
+        View view;
+
+        //If fail or not
+        if(decodeBarcode()) {
+            view = getLayoutInflater().inflate(R.layout.upload_success, null);
+        }else{
+            view = getLayoutInflater().inflate(R.layout.upload_fail, null);
+        }
+
+        ln.addView(view);
+
+        //when screen is clicked will go back to the homeactivity
+        ln.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i  = new Intent ();
+                // TODO fix this intent
+                i.setClass(getBaseContext(), HomeActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                finish ();
+            }
+        });
     }
 
-    private void decodeBarcode(){
+    private boolean decodeBarcode(){
         try {
 //            Bitmap bitmap = new ImageSaver(getBaseContext()).
 //                    setFileName("temp.png").
@@ -51,7 +78,7 @@ public class UploadActivity extends AppCompatActivity {
                             .build();
             if(!detector.isOperational()){
 //                    txtView.setText("Could not set up the detector!");
-                return;
+                return false;
             }
 
             Frame frame = new Frame.Builder().setBitmap(bitmap).build();
@@ -65,7 +92,10 @@ public class UploadActivity extends AppCompatActivity {
         catch(ArrayIndexOutOfBoundsException exception) {
 //            TextView txtView = (TextView) findViewById(R.id.txtContent);
 //            txtView.setText("TRY AGAIN BITCH!!!!");
+            return false;
         }
+
+        return true;
     };
 
 }

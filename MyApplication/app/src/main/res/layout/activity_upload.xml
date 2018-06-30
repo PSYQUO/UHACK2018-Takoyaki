@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".UploadActivity"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:id="@+id/LinearLayout_upload"
+    >
 
     <ImageView
         android:id="@+id/img_view_barcode"
