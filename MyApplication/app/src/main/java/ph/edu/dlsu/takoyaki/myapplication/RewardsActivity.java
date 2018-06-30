@@ -23,8 +23,6 @@ public class RewardsActivity extends AppCompatActivity {
 
                 i.setClass(getBaseContext(), MyRewardsActivity.class);
                 startActivity(i);
-
-
             }
         });
 
