@@ -79,10 +79,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Use" />
             android:layout_marginTop="30dp"
             android:text="Use"
-            android:id="@+id/use_reward"/>
+            android:id="@+id/use_reward"
+            android:background="#fff"
+            />
 
     </LinearLayout>
 
