@@ -37,10 +37,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = registerPassword.getText().toString();
                 String confirmPassword = registerPasswordConfirm.getText().toString();
 
-                if (password.length() > 4 && password.equals(confirmPassword)) {
+                if (password.length() >= 4 && password.equals(confirmPassword)) {
                     // TODO connect to firebase and append this
                     Users u = new Users(uid, email, password, 0, null);
                     databaseReference.child(Users.NAME).child (uid).setValue (u);
+                    finish();
                 } else {
                     // TODO invalid feedback
                 }
