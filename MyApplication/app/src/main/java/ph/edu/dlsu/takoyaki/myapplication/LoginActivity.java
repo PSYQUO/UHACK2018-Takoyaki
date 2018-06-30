@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return true;
+        return password.length() >= 4;
     }
 
     /**
@@ -310,28 +310,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
 
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(Users.NAME);
 
-            final BoolHolder success = new BoolHolder();
-            success.val = false;
-
+            final Users u = new Users();
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot snap: dataSnapshot.getChildren()) {
-                        Users u = snap.getValue(Users.class);
-                        if (u.getUsername().equals(mEmail) && u.getPassword().equals(mPassword)) {
-                            success.val = true;
-                            return;
+                        if (snap.getValue(Users.class).getUsername().equals(mEmail)) {
+                            u.setPassword(snap.getValue(Users.class).getPassword());
                         }
                     }
+
+                    if (u.getPassword() == null) u.setPassword("");
                 }
 
                 @Override
@@ -340,7 +332,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             });
 
-            return success.val;
+            while (u.getPassword() == null) {
+                try {
+                    // Simulate network access.
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    return false;
+                }
+            }
+            return u.getPassword().equals(mPassword);
         }
 
         @Override
@@ -370,8 +370,5 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    class BoolHolder {
-        boolean val;
-    }
 }
 
