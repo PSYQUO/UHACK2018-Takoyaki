@@ -11,6 +11,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -86,8 +87,9 @@ public class UploadActivity extends AppCompatActivity {
             barcodes = detector.detect(frame);
 
             Barcode thisCode = barcodes.valueAt(0);
-//            TextView txtView = (TextView) findViewById(R.id.txtContent);
-//            txtView.setText(thisCode.rawValue);
+//            TextView txtView = (TextView) findViewById(R.id.upload_points);
+//            String[] temp = thisCode.rawValue.split("\\n");
+//            txtView.setText(temp[1]);
         }
         catch(ArrayIndexOutOfBoundsException exception) {
 //            TextView txtView = (TextView) findViewById(R.id.txtContent);
