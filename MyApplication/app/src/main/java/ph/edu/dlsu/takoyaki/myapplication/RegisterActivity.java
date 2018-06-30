@@ -7,7 +7,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import ph.edu.dlsu.takoyaki.myapplication.beans.Users;
+
 public class RegisterActivity extends AppCompatActivity {
+
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +26,20 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText registerPasswordConfirm = (EditText) findViewById(R.id.register_passwordConfirm);
         Button registerBtn = (Button) findViewById(R.id.register_registerBtn);
 
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String uid = databaseReference.child(Users.NAME).push().getKey();
                 String email = registerEmail.getText().toString();
                 String password = registerPassword.getText().toString();
                 String confirmPassword = registerPasswordConfirm.getText().toString();
 
-                if (email.contains("@") && password.length() > 6 && password.equals(confirmPassword)) {
+                if (password.length() > 4 && password.equals(confirmPassword)) {
                     // TODO connect to firebase and append this
-
+                    Users u = new Users(uid, email, password, 0, null);
+                    databaseReference.child(Users.NAME).child (uid).setValue (u);
                 } else {
                     // TODO invalid feedback
                 }

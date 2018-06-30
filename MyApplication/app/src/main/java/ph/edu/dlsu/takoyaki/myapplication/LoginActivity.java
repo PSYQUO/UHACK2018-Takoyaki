@@ -30,8 +30,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import ph.edu.dlsu.takoyaki.myapplication.beans.Users;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -316,16 +324,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(Users.NAME);
 
-            // TODO: register the new account here.
-            return true;
+            final BoolHolder success = new BoolHolder();
+            success.val = false;
+
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                        Users u = snap.getValue(Users.class);
+                        if (u.getUsername().equals(mEmail) && u.getPassword().equals(mPassword)) {
+                            success.val = true;
+                            return;
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            return success.val;
         }
 
         @Override
@@ -353,6 +375,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    class BoolHolder {
+        boolean val;
     }
 }
 

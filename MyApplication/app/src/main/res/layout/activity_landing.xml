@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LandingActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/gradient">
 
     <TextView
         android:layout_width="match_parent"

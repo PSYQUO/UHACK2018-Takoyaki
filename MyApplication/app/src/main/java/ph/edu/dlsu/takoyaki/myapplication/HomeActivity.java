@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.io.ByteArrayOutputStream;
 
@@ -21,8 +23,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ConstraintLayout eventBanner = (ConstraintLayout) findViewById(R.id.eventBanner);
-        ConstraintLayout pointsBanner = (ConstraintLayout) findViewById(R.id.pointsBanner);
+        LinearLayout eventBanner = (LinearLayout) findViewById(R.id.eventBanner);
+        RelativeLayout pointsBanner = (RelativeLayout) findViewById(R.id.pointsBanner);
         Button rewards = (Button) findViewById(R.id.home_rewardsBtn);
         ImageButton homeCameraBtn = (ImageButton) findViewById(R.id.home_cameraBtn);
 
@@ -74,6 +76,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
+            assert extras != null;
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             ByteArrayOutputStream bStream = new ByteArrayOutputStream();
@@ -86,7 +89,6 @@ public class HomeActivity extends AppCompatActivity {
 //                    save(imageBitmap);
 
             Intent i  = new Intent ();
-            // TODO fix this intent
             i.setClass(getBaseContext(), UploadActivity.class);
             i.putExtra("img_pic", byteArray);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

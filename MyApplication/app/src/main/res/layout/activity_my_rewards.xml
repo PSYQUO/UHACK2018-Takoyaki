@@ -5,14 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MyRewardsActivity">
+    tools:context=".MyRewardsActivity"
+    android:background="@color/colorTransparent"
+    >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Rewards"/>
+        android:text="My Rewards"
+        android:textSize="20sp"/>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_rewards_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

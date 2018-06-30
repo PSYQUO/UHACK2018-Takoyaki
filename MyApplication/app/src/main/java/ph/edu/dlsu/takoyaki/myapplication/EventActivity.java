@@ -66,7 +66,6 @@ public class EventActivity extends AppCompatActivity {
 //                    save(imageBitmap);
 
             Intent i = new Intent();
-            //TODO change home activity
             i.putExtra("img_pic", byteArray);
             i.setClass(getBaseContext(), UploadActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

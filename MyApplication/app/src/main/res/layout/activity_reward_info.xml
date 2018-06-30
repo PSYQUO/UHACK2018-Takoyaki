@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RewardInfoActivity"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
