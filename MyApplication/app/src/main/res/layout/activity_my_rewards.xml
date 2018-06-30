@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MyRewardsActivity"
-    android:background="@color/colorTransparent"
+    android:background="@drawable/gradient"
     >
 
     <TextView

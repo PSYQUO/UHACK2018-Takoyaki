@@ -30,10 +30,9 @@ public class PointsActivity extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         final TextView pointsHelp = (TextView) findViewById(R.id.points_help);
-
 //        FirebaseRecyclerAdapter<PointHistory, PointsViewHolder> firebaseRecyclerAdapter =
 //                new FirebaseRecyclerAdapter<PointHistory, PointsViewHolder>(PointsActivity.class,
-//                        R.layout.reward_item, PointsViewHolder.class, databaseReference.child(PointsActivity.NAME)) {
+//                        R.layout.reward_item, RewardsViewHolder.class, databaseReference.child(Rewards.NAME)) {
 //                    @Override
 //                    protected void populateViewHolder(final PointsViewHolder viewHolder, final PointHistory model, int position) {
 //
@@ -59,10 +58,9 @@ public class PointsActivity extends AppCompatActivity {
 //
 //                            }
 //                        });
-//
-////                        viewHolder.pt_name.setText(model.);
-//
-//
+
+////                        viewHolder.pt_name.setText(model.getQRID());
+
 //                    }
 //
 ////                    @Override
@@ -83,6 +81,23 @@ public class PointsActivity extends AppCompatActivity {
 ////                            }
 ////                        });
 ////                    }
+//                    protected void populateViewHolder(RewardsViewHolder viewHolder, Rewards model, int position) {
+//                        viewHolder.rewardDesc.setText(model.getDesc());
+//                        //TODO fix this
+//                        viewHolder.rewardValidity.setText(model.getSponsor());
+//
+//                        String key = getRef(position).getKey ();
+//                        viewHolder.itemView.setTag (key);
+//
+//                        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                Intent i = new Intent(getBaseContext(), RewardInfoActivity.class);
+//                                i.putExtra("key", view.getTag().toString());
+//                                startActivity(i);
+//                            }
+//                        });
+//                    }
 //                };
 
         pointsHelp.setOnClickListener(new View.OnClickListener() {
